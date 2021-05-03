@@ -1,0 +1,17 @@
+# Note: CMD or ENTRYPOINT + executable, executable is a script, single command(no pass any argument)
+# For run:
+# 1. run: docker run -it --rm --name=py-apps-container py-apps --port=3000 --server=localhost
+# (Not sure) Could not start with docker-compose up
+# ENTRYPOINT [ "./apps.py" ]
+# The first index have to an executable, in-example is: "sh"
+# The third index is an command will be executed.
+# For run:
+# 1. no change env: docker run -it --rm --name=py-apps-container py-apps
+# 2. change env: docker run -it --rm --env PORT=2000 --env SERVER=abcxyz --name=py-apps-container py-apps
+# 3. docker-compose up:
+    # environment:
+    #   PORT: 2000
+    #   SERVER: localabc
+ENV PORT 3000
+ENV SERVER localhost
+ENTRYPOINT ["sh", "-c", "./apps.py --port ${PORT} --server ${SERVER}"]

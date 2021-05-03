@@ -1,0 +1,5 @@
+sudo mysql
+
+CREATE USER 'appuser'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'P@ss12345';
+
+GRANT ALL PRIVILEGES ON *.* TO 'appuser'@'localhost' WITH GRANT OPTION;
